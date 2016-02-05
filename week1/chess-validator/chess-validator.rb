@@ -26,14 +26,11 @@ end
 module LegalMoves
 
 	def horizontal_legal_move
-		if @init_position[0] == final_position[0] || @init_position[1] == final_position[1]
-			true
-		else
-			false
-		end	
+		@init_position[0] == final_position[0] || @init_position[1] == final_position[1] ? true : false
 	end
 
 	def diagonal_legal_move
+		@init_position[0] != final_position[0] && @init_position[1] != final_position[1] ? true : false
 	end
 end
 
@@ -70,3 +67,10 @@ end
 
 torre1 = Rook.new([0,0])
 torre1.chek_move([0,1])
+
+alfil1 = Bishop.new([1,0])
+alfil1.chek_move([5,4])
+
+
+
+
