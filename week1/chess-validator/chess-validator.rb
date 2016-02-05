@@ -2,26 +2,31 @@
 # => CHESS VALIDATOR
 ##########################################
 require "pry"
-#Para crear el tablero iniciamos un nuevo array de 8 elementos que contiene otro array de 8 elementos con el valor "cell"
-board = Array.new(8){Array.new(8, "cell")}
 
-=begin
-En pantalla se vería algo así
+class Board
+	attr_reader :board
+	def initialize(board)
+		@board_file = File.open(board, "r").readlines
+		@board = @board_file.collect {|element| element.split}
+	end
 
-board.each do |cell|
-	print cell
-	puts ""
+	def chessboard
+		@board = @board.collect do |i|
+			i.collect do|element| 
+				if element == "--"
+					nil
+				else
+					element.to_sym
+				end
+			end
+		end
+	end
+
 end
 
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-["cell", "cell", "cell", "cell", "cell", "cell", "cell", "cell"]
-=end
+ tablero = Board.new("simple-board.txt")
+ puts tablero.chessboard
+
 
 module LegalMoves
 
@@ -30,13 +35,20 @@ module LegalMoves
 	end
 
 	def diagonal_legal_move
-		(@init_position[0] - final_position[0]).abs == (@init_position[1] - final_position[1]).abs
+		(@init_position[0] - final_position[0]).abs == (@init_position[1] - final_position[1]).abs 
 	end
 
 	def knight_move
 		!(horizontal_legal_move || diagonal_legal_move) && ((@init_position[0] - final_position[0]).abs) < 3 && ((@init_position[1] - final_position[1]).abs) < 3
 	end
+
+	def king_move
+		(horizontal_legal_move || diagonal_legal_move) && ((@init_position[0] - final_position[0]).abs) < 2 && ((@init_position[1] - final_position[1]).abs) < 2
+	end
+
 end
+
+
 
 class Piece
 	attr_accessor :init_position, :final_position
@@ -83,6 +95,15 @@ class Knight < Piece
 	end
 end
 
+class King < Piece
+	include LegalMoves
+	def legal_move	
+		king_move
+	end
+end
+
+
+
 torre = Rook.new([0,0])
 torre.chek_move([0,1])
 
@@ -94,4 +115,17 @@ reina.chek_move([3,7])
 
 caballo = Knight.new([1,0])
 caballo.chek_move([2,2])
+
+rey = King.new([3,3])
+rey.chek_move([3,4])
+
+
+
+
+
+
+
+
+
+
 
