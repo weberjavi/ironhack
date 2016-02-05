@@ -32,6 +32,10 @@ module LegalMoves
 	def diagonal_legal_move
 		(@init_position[0] - final_position[0]).abs == (@init_position[1] - final_position[1]).abs
 	end
+
+	def knight_move
+		!(horizontal_legal_move || diagonal_legal_move) && ((@init_position[0] - final_position[0]).abs) < 3 && ((@init_position[1] - final_position[1]).abs) < 3
+	end
 end
 
 class Piece
@@ -72,6 +76,13 @@ class Queen < Piece
 	end
 end
 
+class Knight < Piece
+	include LegalMoves
+	def legal_move	
+		knight_move
+	end
+end
+
 torre = Rook.new([0,0])
 torre.chek_move([0,1])
 
@@ -81,5 +92,6 @@ alfil.chek_move([6,0])
 reina = Queen.new([3,4])
 reina.chek_move([3,7])
 
-
+caballo = Knight.new([1,0])
+caballo.chek_move([2,2])
 
