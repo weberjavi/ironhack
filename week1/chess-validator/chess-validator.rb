@@ -26,11 +26,11 @@ end
 module LegalMoves
 
 	def horizontal_legal_move
-		@init_position[0] == final_position[0] || @init_position[1] == final_position[1] ? true : false
+		@init_position[0] == final_position[0] || @init_position[1] == final_position[1] 
 	end
 
 	def diagonal_legal_move
-		@init_position[0] != final_position[0] && @init_position[1] != final_position[1] ? true : false
+		(@init_position[0] - final_position[0]).abs == (@init_position[1] - final_position[1]).abs
 	end
 end
 
@@ -65,12 +65,21 @@ class Bishop < Piece
 	end
 end
 
-torre1 = Rook.new([0,0])
-torre1.chek_move([0,1])
+class Queen < Piece
+	include LegalMoves
+	def legal_move
+		horizontal_legal_move	|| diagonal_legal_move	
+	end
+end
 
-alfil1 = Bishop.new([1,0])
-alfil1.chek_move([5,4])
+torre = Rook.new([0,0])
+torre.chek_move([0,1])
 
+alfil = Bishop.new([1,4])
+alfil.chek_move([6,0])
+
+reina = Queen.new([3,4])
+reina.chek_move([3,7])
 
 
 
