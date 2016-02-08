@@ -38,7 +38,7 @@ module LegalMoves
 
 	def knight_move
 		!(horizontal_legal_move || diagonal_legal_move) && ((@init_position[0] - final_position[0]).abs) < 3 && ((@init_position[1] - final_position[1]).abs) < 3
-	end
+	en3266d
 
 	def king_move
 		(horizontal_legal_move || diagonal_legal_move) && ((@init_position[0] - final_position[0]).abs) < 2 && ((@init_position[1] - final_position[1]).abs) < 2
