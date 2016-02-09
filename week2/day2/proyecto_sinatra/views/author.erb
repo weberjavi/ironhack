@@ -1,0 +1,13 @@
+ <h1>My First Sinatra</h1>
+  <p>
+    <b>Author:</b>
+    Javi Abia
+  </p>
+  <!--Los caracteres dentro de los porcentajes será código ruby que ejecuta el servidor-->
+ <% if Date.today.monday? %>
+ 	<p>Hoy es lunes</p>
+ 	 	
+ <% end %>
+
+ <!--Para poder ver código ruby en la página hay que poner el igual después del porcentaje-->
+<p> today is: <%= Date.today.strftime("%d/%m/%Y") %> </p>

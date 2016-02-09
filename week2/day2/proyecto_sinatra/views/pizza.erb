@@ -1,0 +1,8 @@
+<!--La lógica de la vista se realiza en la vista-->
+<link rel="stylesheet" type="text/css" href="/css/styles.css">
+<ul>
+  <% @ingredients.each do |ingr| %>
+    <li><%= ingr %></li><!--Es fundamental que el síbolo = dentro del bloque de ruby esté en los elementos a mostrar. En este caso dentro del elemento en el loop-->
+  <% end %>
+</ul>
+<img class="lampara" src="img/lampara_1.png">
