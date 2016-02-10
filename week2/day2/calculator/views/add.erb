@@ -1,0 +1,20 @@
+<!-- add.erb -->
+<!doctype html>
+<html>
+<head>
+  <title>Add | Online Calculator</title>
+</head>
+<body>
+  	<h1>Add</h1>
+	<form action=<%= "/operation" %> method="POST">
+		<label for="first_number"></label>
+		<input type="number" id="first_number" placeholder="1st number" name="first_number">
+		<label for="second_number"></label>
+		<input type="number" id="second_number" placeholder="2nd number" name="second_number">
+		<button type="submit" name="btn" value="add">+</button>
+		<button type="submit" name="btn" value="substract">-</button>
+		<button type="submit" name="btn" value="divide">/</button>
+		<button type="submit" name="btn" value="multiply">x</button>
+	</form>
+</body>
+</html>
