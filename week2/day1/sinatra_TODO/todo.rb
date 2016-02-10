@@ -24,10 +24,6 @@ class Task
     	@completed = false
     end
 
-    def created_at
-    	@created_at
-    end
-
     def update_content!(string)
     	@updated_at = Time.now.strftime("%m/%d/%Y")
     	@content = string
