@@ -1,5 +1,6 @@
 require "rspec"
 require_relative "../todo_list.rb"
+require "pry"
 
 RSpec.describe "TodoList" do
 	#Con let indicamos que esta acción debe realizarse sólo en los tests en los que utilicemos la variable
@@ -16,8 +17,17 @@ RSpec.describe "TodoList" do
     it "should delete a task by index" do
       task = Task.new("new task")
       todo_list.add_task(task)
-      expect(todo_list.delete_task(1)).to eq("new task")
+      binding.pry
+      expect(todo_list.delete_task(1)).to eq(task)
     end
   end
+
+  # describe "#find_task_by_id" do
+  #   it "returns an specific task by its id inside the todo list" do
+  #     task = Task.new("new task")
+  #     todo_list.add_task(task)
+  #     expect(todo_list.find_task_by_id(1)).to eq(task)
+  #   end
+  # end
 
 end
