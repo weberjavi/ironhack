@@ -1,7 +1,7 @@
 class Post
-  attr_reader :tittle, :text, :date
-  def initialize(tittle, text, date = Time.now)
-    @tittle = tittle
+  attr_reader :title, :text, :date
+  def initialize(title, text, date = Time.now)
+    @title = title
     @text = text
     @date = date
   end

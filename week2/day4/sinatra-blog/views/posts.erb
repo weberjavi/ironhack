@@ -1,8 +1,15 @@
 <html>
   <head>
     <title>My Sinatra Blog</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    
+    <h1>Sinatra Blog Index</h1>
+    <h3>Choose the post to read</h3>
+    <ul>
+      <% @posts.each_with_index do |post, index| %>
+        <li><a href="/posts/<%= post.title %>/<%= index %>"><%= post.title %></a></li>
+      <% end %>
+    </ul>
   </body>
 </html>

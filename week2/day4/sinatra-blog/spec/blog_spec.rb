@@ -20,6 +20,7 @@ RSpec.describe "Blog" do
       post2 = Post.new("name2", "text2")
       blog.add_post(post)
       blog.add_post(post2)
+
       expect(blog.latest_posts).to eq([post2,post])
     end
   end
