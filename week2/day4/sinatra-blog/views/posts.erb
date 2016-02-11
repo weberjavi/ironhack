@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>My Sinatra Blog</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
   <body>
     <h1>Sinatra Blog Index</h1>
@@ -11,5 +11,6 @@
         <li><a href="/posts/<%= post.title %>/<%= index %>"><%= post.title %></a></li>
       <% end %>
     </ul>
+    <h3><a href="/new_post">Create new post</a></h3>
   </body>
 </html>

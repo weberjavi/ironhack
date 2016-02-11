@@ -1,7 +1,7 @@
 <html>
   <head>
-    <title>My Sinatra Blog</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title><%= @blog_data[@id.to_i].title %></title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
   <body>
     <h1> <%= @blog_data[@id.to_i].title %> </h1>

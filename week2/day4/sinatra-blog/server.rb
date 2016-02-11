@@ -27,3 +27,11 @@ get "/posts/:title/:id" do
 
   erb (:single_post)
 end
+
+get "/new_post" do
+  erb (:create_post)
+end
+
+post "/add_post" do
+  
+end

@@ -1,0 +1,16 @@
+<html>
+<head>
+  <title>Create post | Sinatra blog</title>
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+    <h1>Add your post</h1>
+    <form action=<%= "/new_post" %> method="POST">
+    <label for="title"><h2>Post title</h2></label>
+    <input type="text" id="title" placeholder="title">
+    <label for="text_body"></label>
+    <input type="text" id="text_body">
+    <button type="submit" name="btn" value="create"></button>
+  </form>
+</body>
+</html>
