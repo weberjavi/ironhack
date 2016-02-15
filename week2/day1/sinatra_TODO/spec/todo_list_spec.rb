@@ -1,6 +1,7 @@
 require "rspec"
-require_relative "../todo_list.rb"
-require "pry"
+require_relative "../lib/todo.rb"
+require_relative "../lib/todo_list.rb"
+# require "pry"
 
 RSpec.describe "TodoList" do
 	#Con let indicamos que esta acción debe realizarse sólo en los tests en los que utilicemos la variable
@@ -17,8 +18,7 @@ RSpec.describe "TodoList" do
     it "should delete a task by index" do
       task = Task.new("new task")
       todo_list.add_task(task)
-      binding.pry
-      expect(todo_list.delete_task(1)).to eq(task)
+      expect(todo_list.delete_task(task.id)).to eq([task])
     end
   end
 
@@ -26,8 +26,12 @@ RSpec.describe "TodoList" do
   #   it "returns an specific task by its id inside the todo list" do
   #     task = Task.new("new task")
   #     todo_list.add_task(task)
-  #     expect(todo_list.find_task_by_id(1)).to eq(task)
+  #     expect(todo_list.find_task_by_id(1)).to eq([task])
   #   end
   # end
+
+
+# para poder utilizar el sor entre instancias debes especificar cual es el atributo que quieres comparar
+# [a.new, a.new, a.new].sort_by{|a| a.id}  
 
 end

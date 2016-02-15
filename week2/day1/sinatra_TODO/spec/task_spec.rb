@@ -1,9 +1,10 @@
 require "rspec"
-require_relative "../todo.rb"
+require_relative "../lib/todo.rb"
 
 RSpec.describe "Task" do
 	#Con let indicamos que esta acción debe realizarse sólo en los tests en los que utilicemos la variable
 	let (:task_example) {Task.new("Buy the milk")}
+	
 
 	describe "#completed?" do
 		it "returns false if @completed is false" do

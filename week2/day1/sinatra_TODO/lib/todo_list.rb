@@ -1,4 +1,3 @@
-require_relative "./todo.rb"
 require "pry"
 
 class TodoList
@@ -6,7 +5,7 @@ class TodoList
     def initialize
         @tasks = []
     end
-    def add_task(task)
+    def add_task(task) # Inyección de Dependencias: En este método introduciríamos como parámetro una instancia de la clase Task
       @tasks << task
     end
     def delete_task(identificador)

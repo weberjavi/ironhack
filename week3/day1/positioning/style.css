@@ -1,0 +1,31 @@
+code {
+  background: #2db34a;
+  border-radius: 6px;
+  color: #fff;
+  display: block;
+  padding: 24px 15px;
+  text-align: center;
+}
+header,
+section,
+aside,
+footer {
+  margin: 0 1.5% 24px 1.5%;
+}
+
+/* Con position:relative modificamos la posición con respecto al lugar donde se ubicaría el elemento de manera natural. 
+Habitualmente se utiliza la posición relative para poder situar un elemento hijo de manera absoluta
+con respecto al elemento padre */
+
+/* Con position:absolute ubicamos los elementos con respecto al padre más próximo con posicionamiento declarado*/
+
+/* clearfix------ todos los elementos que tienen hijos flotantes se les pone .clearfix, por que el float
+no ocupa espacio. Con esto lo que haces es que cuando los padres tienen hijos flotantes tome el hight de los hijos*/
+
+/*.clearfix:before, .cleafix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}*/
