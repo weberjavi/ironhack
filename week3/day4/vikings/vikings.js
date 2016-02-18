@@ -15,7 +15,7 @@ var Viking = function(name, age){
   this.age = age;
   this.health = Math.floor(Math.random() * (100 - 70) + 70 - (age/25));
 
-  this.strength = Math.floor(Math.random() * (15 - 7) + 7 - (age/50));
+  this.strength = Math.floor(Math.random() * (35 - 17) + 17 - (age/50));
     
 
   this.attack =  function(enemy){
@@ -26,7 +26,7 @@ var Viking = function(name, age){
 
 /// Barco vikingo
 
-var vik = [
+var drakar = [
   olaf = new Viking("Olaf", 27),  //OLAF
   erik = new Viking("Erik", 45),  //ERIK
   valeria = new Viking("Valeria", 33),  //VALERIA
@@ -72,8 +72,8 @@ var TrainingPit = function(viking_fighters, max_turns){
 ///////////////////
 
 var Saxon = function(){
-  this.strength = Math.floor(Math.random() * (5 - 3) + 3);
-  this.health = Math.floor(Math.random() * (40 - 20) + 20);
+  this.strength = Math.floor(Math.random() * (15 - 13) + 13);
+  this.health = Math.floor(Math.random() * (60 - 20) + 20);
 
   this.attack =  function(enemy){
     return enemy.health -= this.strength;
@@ -90,7 +90,7 @@ function create_saxons(number_of_saxons){
     return mob;
 }
 
- var saxons_mob = create_saxons(9);
+ var saxons_mob = create_saxons(30);
  //console.log(saxons_mob);
 
 
@@ -100,24 +100,81 @@ function create_saxons(number_of_saxons){
 //////////////////
 
 
-var Battle = function(vikings, saxons){
+var BattleField = function(vikings, saxons){
   this.vikings = vikings;
   this.saxons = saxons;
 
   var saxon_deads = [];
   var viking_deads = [];
 
-  var random_viking = Math.floor((Math.random() * vik.length) + 1) - 1;
-  var random_saxon = Math.floor((Math.random() * saxons_mob.length) + 1) - 1;
+  this.battle = function(){
+
+    console.log("the battle begins")
+
+    while (saxons.length !== 0 || vikings.length !== 0){
+      var rv = vikings[Math.floor(Math.random() * vikings.length)];
+      var rs = saxons[Math.floor(Math.random() * saxons.length)];
+
+      rs.attack(rv);
+      rv.attack(rs);
+
+      // if(rs.health <= 0 || rv.health <= 0){
+      //   saxon_deads.push(rs);
+      //   viking_deads.push(rv);
+
+      //   var i = saxons.indexOf(rs);
+      //   saxons.splice(i,1)
+      //   console.log("a saxon is dead")
+      //   console.log(saxon_deads);
+      //   console.log(saxons);
 
 
+      //   var j = vikings.indexOf(rv);
+      //   vikings.splice(j,1)
+      //   console.log(rv.name + " is dead")
+      //   console.log(viking_deads);
+      //   console.log(vikings);
+
+      //   if (saxons.length === 0) {
+      //     return console.log("All saxons are dead");
+      //   } else if (vikings.length === 0){
+      //     return console.log("All vikings are dead");
+      //   };
+
+      if(rs.health <= 0){
+        saxon_deads.push(rs);
+
+        var i = saxons.indexOf(rs);
+        saxons.splice(i,1)
+        console.log("a saxon is dead")
+        console.log(saxon_deads);
+        console.log(saxons);
+
+        if (saxons.length === 0) {
+          return console.log("All saxons are dead");
+        }
+
+      } else if (rv.health <= 0){
+        viking_deads.push(rv);
+
+        var j = vikings.indexOf(rv);
+        vikings.splice(j,1);   
+        console.log(rv.name + " is dead");  
+        console.log(viking_deads);
+        console.log(vikings);
+        if (vikings.length === 0){
+          return console.log("All vikings are dead");
+        }
+      }
+    } 
+  }
 }
 
-console.log(vik[random_viking]);
-console.log(saxons_mob[random_saxon]);
 
 
+var valhala = new BattleField(drakar, saxons_mob);
 
+valhala.battle();
 
 
 
